@@ -1,0 +1,2 @@
+WARNING_NONMATCHING_GROUPS = "Warning: The selected tracks belong to groups with different optimizer settings. When grouped, these settings will be overwritten. Continue?"
+WARNING_SPLITTING_GROUPS = "Warning: Grouping these tracks will split them from their existing groups. Continue?"
