@@ -54,7 +54,11 @@ def compute_stat_summary(feature, rms):
 def compute_feature_vectors(data, sample_rate, mfcc_size=13, n_fft=2048, hop_length=512):
     y, sr = data.T, sample_rate
     if y.ndim == 1:
-        y = np.expand_dims(y, axis=0) 
+        y = np.expand_dims(y, axis=0)
+
+    min_samples = n_fft + 8*hop_length
+    if y.shape[-1] < min_samples:
+        y = librosa.util.fix_length(y, size=min_samples, axis=-1)
 
     # 1. MFCC for timbre
     mfcc = librosa.feature.mfcc(y=y, sr=sr, n_mfcc=mfcc_size, n_fft=n_fft, hop_length=hop_length)
