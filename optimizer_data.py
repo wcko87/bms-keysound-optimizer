@@ -492,6 +492,9 @@ class OptimizerData(object):
         return count_vars
 
     def _get_current_audio_distance(self) -> str:
+        if self._last_clustering_distance_query is None:
+            return ''
+
         def get_audio_data_id(guid, substitute=False):
             return self.get_keysound(guid).get_audio_data(substitute=substitute).id
 
